@@ -1,0 +1,138 @@
+/* ==========================================================================
+   Paleta propia "Atardecer": ciruela profundo, ámbar, magenta y turquesa
+   ========================================================================== */
+:root {
+    --fondo:        #140b1f;
+    --superficie:   #22132f;
+    --borde:        #3d2550;
+    --texto:        #fdf4ff;
+    --texto-suave:  #e9d5ff;
+    --acento:       #fb923c;   /* naranja (aristas cercanas) */
+    --acento-2:     #c026d3;   /* magenta (aristas lejanas) */
+    --vertice:      #2dd4bf;   /* turquesa (vértices) */
+}
+
+/* Configuración general del lienzo y página */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: radial-gradient(circle at 30% 20%, #2a1240 0%, var(--fondo) 60%);
+    background-color: var(--fondo);
+    color: var(--texto);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0;
+    padding: 20px;
+    gap: 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+#canvas-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+canvas {
+    background: linear-gradient(160deg, #1d0f2b 0%, #10081a 100%);
+    border: 2px solid var(--acento);
+    border-radius: 12px;
+    box-shadow: 0 0 0 4px rgba(192, 38, 211, 0.18), 0 10px 30px rgba(0, 0, 0, 0.6);
+    max-width: 100%;
+    height: auto;
+}
+
+/* Panel de control */
+.panel {
+    background-color: var(--superficie);
+    padding: 20px;
+    border-radius: 12px;
+    width: 320px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--borde);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    background: linear-gradient(90deg, var(--acento), var(--acento-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+h3 {
+    color: var(--texto);
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 3px;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+label {
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    display: flex;
+    justify-content: space-between;
+}
+
+input[type=range] {
+    width: 100%;
+    margin-top: 4px;
+    accent-color: var(--acento);
+}
+
+select {
+    margin-top: 6px;
+    padding: 7px 8px;
+    border-radius: 8px;
+    border: 1px solid var(--borde);
+    background-color: #170c22;
+    color: var(--texto);
+    font-size: 0.85rem;
+}
+
+select:focus,
+button:focus-visible {
+    outline: 2px solid var(--vertice);
+    outline-offset: 2px;
+}
+
+/* Botón de auto-rotación (Reto) */
+#btnAutoRotar {
+    width: 100%;
+    margin-top: 4px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a0b14;
+    background: linear-gradient(90deg, var(--acento), #f472b6);
+    cursor: pointer;
+    transition: transform 0.1s ease, filter 0.2s ease;
+}
+
+#btnAutoRotar:hover { filter: brightness(1.08); }
+#btnAutoRotar:active { transform: scale(0.98); }
+
+#btnAutoRotar.activo {
+    background: linear-gradient(90deg, var(--vertice), #38bdf8);
+}
+
+.val {
+    color: var(--vertice);
+    font-weight: bold;
+}
